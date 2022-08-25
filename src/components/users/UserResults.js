@@ -21,7 +21,7 @@ function UserResults() {
             </div>
           )
     } else{
-        return (<ReactLoading type='cylon' height='5rem' width='8rem' />)
+        return (<ReactLoading className='mx-auto' type='cylon' height='5rem' width='8rem' />)
     }
     
 }
