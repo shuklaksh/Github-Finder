@@ -1,28 +1,16 @@
-import { useEffect, useState } from 'react'
-import Spinner from '../layouts/Spinner';
+import {useContext } from 'react'
+import ReactLoading from 'react-loading';
 import UserItems from './UserItems';
+import GithubContext from '../../context/github/GithubContext';
+
 
 
 function UserResults() {
-    const[users,setUser] = useState([]);
-    const[isLoading,setIsLoading] = useState([true]);
-  
-    useEffect(() => {
-        fetchUsers();
-    }, [])
+    const{users, isLoading} = useContext(GithubContext);
 
-    const fetchUsers = async () => {
-        const response = await fetch(`${process.env.REACT_APP_GITHUB_URL}/users` ,{
-            headers:{
-                "Content-Type": 'application/json',
-                "Accept": 'application/json',
-                "Authorization": `token ${process.env.REACT_APP_GITHUB_TOKEN}`,
-            }
-        })
-        const data = await response.json();
-        setUser(data);
-        setIsLoading(false);
-        }
+    
+
+    
     if(!isLoading) {
         return (
             <div className='grid grid-col-1 gap-8 xl:grid-cols-4 lg:grid-cols-3 md: grid-cols-2'>
@@ -33,7 +21,7 @@ function UserResults() {
             </div>
           )
     } else{
-        return (<Spinner />)
+        return (<ReactLoading type='cylon' height='5rem' width='8rem' />)
     }
     
 }
