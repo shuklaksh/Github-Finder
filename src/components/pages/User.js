@@ -14,7 +14,7 @@ function User() {
         getUserRepos(params.login);
     },[])
 
-   
+   console.log();
     const {
         name,
         type,
@@ -32,7 +32,6 @@ function User() {
         public_gists,
         hireable
       } = user;
-
 
     if(isLoading) {
         return (<ReactLoading className='mx-auto' type='cylon' height='5rem' width='8rem' />)
@@ -85,7 +84,7 @@ function User() {
                             <div className="stat-title text-md">Website</div>
                             <div className="text-lg stat-value">
                                 <a 
-                                    href={'https:// ${blog}'}
+                                    href={`https://${blog}`}
                                     target= '_blank' 
                                     rel= 'noreferrer'
                                 >
@@ -96,11 +95,12 @@ function User() {
                     )}
 
                     {twitter_username && (
+                       
                         <div className="stat">
                             <div className="stat-title text-md">Twitter</div>
                             <div className="text-lg stat-value">
                                 <a 
-                                    href={'https://twitter.com/${twitter_username}'} 
+                                    href={`https://twitter.com/${twitter_username}`} 
                                     target= '_blank' 
                                     rel= 'noreferrer'
                                 >
@@ -160,7 +160,7 @@ function User() {
         </div>
     </div>
 
-      
+      {/* <RepoList repos={repos} /> */}
       
     </>
   )
